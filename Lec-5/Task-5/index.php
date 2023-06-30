@@ -18,6 +18,9 @@ if (isset($_FILES['file'])) {
             if ($file_size <= 1000000) {
                 $file_name_new = uniqid('', true) . '.' . $file_ext;
                 $file_destination = 'uploads/' . $file_name_new;
+                if (!is_dir('uploads')) {
+                    mkdir('uploads');
+                }
                 if (move_uploaded_file($file_tmp, $file_destination)) {
                     $msgs[] = 'File uploaded successfully';
                 } else {
