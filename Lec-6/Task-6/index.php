@@ -12,12 +12,12 @@ if (isset($_FILES['files'])) {
     for ($i = 0; $i < $file_count; $i++) {
         $file_ext = explode('.', $file_name[$i]);
         $file_ext = strtolower(end($file_ext));
-        $allowed = ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx', 'txt', 'zip', 'rar', 'mp3', 'mp4', 'ppt', 'pptx', 'xls', 'xlsx'];
+        $allowed = ['jpg', 'pdf', 'docx'];
 
         if ($file_error[$i] == 0) {
             if (in_array($file_ext, $allowed)) {
                 if ($file_error[$i] === 0) {
-                    if ($file_size[$i] <= 1000000) {
+                    if ($file_size[$i] <= 8388608) {
                         $file_new_name = uniqid('', true) . '.' . $file_ext;
                         $file_destination = 'uploads/' . $file_new_name;
                         if (!is_dir('uploads')) {
@@ -29,13 +29,13 @@ if (isset($_FILES['files'])) {
                             $errors[] = 'File ' . $file_name[$i] . ' not uploaded';
                         }
                     } else {
-                        $errors[] = 'File ' . $file_name[$i] . ' is too large';
+                        $errors[] = 'File ' . $file_name[$i] . ' is too large. Max allowed size is 8MB';
                     }
                 } else {
                     $errors[] = 'File ' . $file_name[$i] . ' not uploaded due to error';
                 }
             } else {
-                $errors[] = 'File ' . $file_name[$i] . ' not allowed';
+                $errors[] = 'File ' . $file_name[$i] . ' not allowed. Allowed  files extension are ' . implode(', ', $allowed);
             }
         } else {
             if ($file_error[$i] == 4) {
