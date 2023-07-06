@@ -39,7 +39,7 @@ if (isset($_FILES['files'])) {
             }
         } else {
             if ($file_error[$i] == 4) {
-                $errors[] = 'Plz select a file to upload';
+                $errors[] = 'Select at least file to upload';
             } else {
                 $errors[] = 'Error in uploading file try again';
             }
@@ -57,10 +57,9 @@ if (isset($_FILES['files'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-
 </head>
 
-<body class="bg-primary">
+<body class="bg-primary ">
     <div class="container  ">
         <div class="d-flex justify-content-center align-items-center vh-100  row">
             <form method="post" class="bg-white p-5 rounded-1" enctype="multipart/form-data">
@@ -86,5 +85,4 @@ if (isset($_FILES['files'])) {
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
-
 </html>
