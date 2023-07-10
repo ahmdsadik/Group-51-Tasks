@@ -13,4 +13,5 @@ $q = 'SELECT YEAR(birth_date)';
 $q = 'SELECT job_id FROM employees WHERE commission_pct IS NOT Null';
 
 // all employees that work under  	Steven as first name
-$q = "SELECT first_name FROM employees WHERE first_name = 'Steven'";
+$q = "SELECT employee_id, first_name FROM employees WHERE manager_id = 100";
+
