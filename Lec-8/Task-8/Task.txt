@@ -1,0 +1,12 @@
+SELECT 
+	first_name, department_name, street_address 
+FROM 
+	employees 
+JOIN 
+	departments
+ON 
+	departments.department_id = employees.department_id
+JOIN 
+	locations
+On 
+	locations.location_id = departments.location_id
