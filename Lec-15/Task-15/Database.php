@@ -19,18 +19,21 @@ class Database implements DbInt
             $cols = implode(',', $cols);
         }
         $this->query = "select $cols from $table ";
+        
         return $this;
     }
 
     public function where($col, $op, $value)
     {
         $this->query .= " where $col $op '$value'";
+
         return $this;
     }
 
     public function and($col, $op, $valu)
     {
         $this->query .= " and $col $op '$valu'";
+
         return $this;
     }
     public function allData()
@@ -58,12 +61,14 @@ class Database implements DbInt
             $this->query .= "$column = '$val' ,";
         }
         $this->query = rtrim($this->query, ',');
+
         return $this;
     }
 
     public function delete($table)
     {
         $this->query = "delete from $table";
+
         return $this;
     }
 }
